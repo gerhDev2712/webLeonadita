@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\User;
 
 class StartSeeder extends Seeder
 {
@@ -14,13 +15,15 @@ class StartSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'nombre_usuario'=>'sin_nombre69',
-            'nombres'=>'algunos',
-            'apellido_paterno'=>'tiene',
-            'apellido_materno'=>'tal vez',
-            'email'=>'alguncorreo@correo.com',
+            'nombre_usuario'=>'gerh2712',
+            'nombres'=>'Gerardo',
+            'apellido_paterno'=>'Hernandez',
+            'apellido_materno'=>'Hernandez',
+            'email'=>'prueba@mail.com',
             'password'=>Hash::make('12345'),
             'admin'=>0
         ]);
+
+        factory(User::class, 20)->create();
     }
 }
