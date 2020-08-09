@@ -94,6 +94,9 @@
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+                <div class="pruebas">
+                    <button><a href="{{ route('getUsuario') }}" style="color:white">Realizar prueba</a></button>
+                </div>
             </div>
         </div>
     </body>

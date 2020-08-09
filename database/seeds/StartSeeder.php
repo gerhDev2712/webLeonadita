@@ -24,6 +24,28 @@ class StartSeeder extends Seeder
             'admin'=>0
         ]);
 
+        DB::table('users')->insert([
+            'nombre_usuario'=>'rod-alfa98',
+            'nombres'=>'Rodrigo',
+            'apellido_paterno'=>'Alfaro',
+            'apellido_materno'=>'Domínguez',
+            'email'=>'rodrigoalfarod@gmail.com',
+            'password'=>Hash::make('12345'),
+            'admin'=>0
+        ]);
+
+        DB::table('users')->insert([
+            'nombre_usuario'=>'elCacas3000',
+            'nombres'=>'Erick',
+            'apellido_paterno'=>'el cacas',
+            'apellido_materno'=>'Ramírez',
+            'email'=>'soyelcacas@gmail.com',
+            'password'=>Hash::make('12345'),
+            'admin'=>0
+        ]);
+
         factory(User::class, 20)->create();
+
+        
     }
 }

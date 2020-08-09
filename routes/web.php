@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController as User;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +15,43 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Ruta raíz, se encarga ya sea de redirigir a welcome en caso de que el usuario no esté autenticado
+// o a home en caso de que el usuario lo esté
 Route::get('/', function () {
+
     return view('components/App_Vue');
-});
+
+    /*if(!Auth::check()){
+        return view('welcome');
+    }
+
+    $usuario = User::find(Auth::id());
+    return view('home',['usuario'=>$usuario]);*/
+
+})->name('index');
+
+//Ruta encargada de redirigir a Welcome
+Route::get('/welcome',function(){
+    
+    return view('welcome');
+
+})->name('welcome');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Ruta encargada de redirigir a home (default creada por Laravel)
+Route::get('/home',['uses'=>'HomeController@index','as'=>'home']);
+
+//Ruta encargada de realizar el proceso de autenticacion
+Route::post('/login',['uses'=>'Auth\LoginController@login','as'=>'login']);
+
+//Ruta prueba, creada para probar los controladores de Usuario y otras entidades
+Route::get('/getUsuario',function(){
+    $usuario = User::find(1);
+    return $usuario;
+})->name('getUsuario');
+
+Route::get('/users',function(){
+    $users = User::get();
+    return $users;
+})->name('users');
