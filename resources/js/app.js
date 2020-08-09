@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+const { default: Axios } = require('axios');
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -29,4 +31,18 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    created: function (){
+        this.getUsers();
+    },
+    data: {
+        users_content:[]
+    },
+    methods: {
+        getUsers: function(){
+            var urlUsers = 'users';
+            axios.get(urlUsers).then(response =>{
+                this.users_content = response.data;
+            });
+        }
+    }
 });

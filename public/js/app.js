@@ -49730,6 +49730,9 @@ module.exports = function(module) {
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"),
+    Axios = _require["default"];
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -49751,7 +49754,23 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  created: function created() {
+    this.getUsers();
+  },
+  data: {
+    users_content: []
+  },
+  methods: {
+    getUsers: function getUsers() {
+      var _this = this;
+
+      var urlUsers = 'users';
+      axios.get(urlUsers).then(function (response) {
+        _this.users_content = response.data;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -49888,8 +49907,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\app\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\app\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\webLeonardita\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\webLeonardita\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
