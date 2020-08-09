@@ -51,7 +51,9 @@ Route::get('/getUsuario',function(){
     return $usuario;
 })->name('getUsuario');
 
-Route::get('/users',function(){
+/*Route::get('/users',function(){
     $users = User::get();
     return $users;
-})->name('users');
+})->name('users');*/
+
+Route::get('/users',['uses'=>'UserController@index'])->name('users');
