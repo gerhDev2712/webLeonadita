@@ -34,7 +34,7 @@ class UserController extends Authenticatable
 
         $users = User::get();
 
-        return $users;
+        return $users;      
 
     }
 

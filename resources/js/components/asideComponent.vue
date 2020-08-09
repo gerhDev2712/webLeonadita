@@ -1,5 +1,5 @@
 <template>
-  <div class="col-sm-12 col-lg-4">
+  <div>
 
         <!--TITLE-->
         <div class="row pb-3">

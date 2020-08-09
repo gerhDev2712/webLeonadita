@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
 // o a home en caso de que el usuario lo esté
 Route::get('/', function () {
 
-    return view('components/App_Vue');
+    return view('Inicio');
 
     /*if(!Auth::check()){
         return view('welcome');
@@ -57,3 +57,5 @@ Route::get('/getUsuario',function(){
 })->name('users');*/
 
 Route::get('/users',['uses'=>'UserController@index'])->name('users');
+
+Route::resource('/usuarios', 'UsersController')->middleware('auth');

@@ -1966,8 +1966,10 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.getUsers();
   },
-  data: {
-    users_content: []
+  data: function data() {
+    return {
+      users_content: []
+    };
   },
   methods: {
     getUsers: function getUsers() {
@@ -37582,7 +37584,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-12 col-lg-4" }, [
+    return _c("div", [
       _c("div", { staticClass: "row pb-3" }, [
         _c("h2", { staticClass: "col-12 display-5" }, [
           _vm._v("Te puede interesar")
@@ -37638,7 +37640,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("main", { staticClass: "col-sm-12 col-lg-7" }, [
+  return _c("main", [
     _c("div", { staticClass: "jumbotron" }, [
       _c("h1", { staticClass: "display-4" }, [_vm._v("Hello, world!")]),
       _vm._v(" "),
