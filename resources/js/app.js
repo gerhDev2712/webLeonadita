@@ -21,8 +21,8 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('main-component', require('./components/mainComponent.vue').default);
-Vue.component('aside-component', require('./components/asideComponent.vue').default);
+Vue.component('main-component', require('./components/MainComponent.vue').default);
+Vue.component('aside-component', require('./components/AsideComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31,19 +31,5 @@ Vue.component('aside-component', require('./components/asideComponent.vue').defa
  */
 
 const app = new Vue({
-    el: '#app',
-    created: function (){
-        this.getUsers();
-    },
-    data: {
-        users_content:[]
-    },
-    methods: {
-        getUsers: function(){
-            var urlUsers = 'users';
-            axios.get(urlUsers).then(response =>{
-                this.users_content = response.data;
-            });
-        }
-    }
+    el: '#app'
 });

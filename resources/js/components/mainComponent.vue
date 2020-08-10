@@ -2,11 +2,18 @@
 
     <main>
         <div class="jumbotron">
-            <h1 class="display-4">Hello, world!</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-            <hr class="my-4">
-            <p>@{{$data}}</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            <h1 class="display-4">Leonardita Engine</h1>
+            <p class="lead">Un proyecto realizado durante la pandemia del sars-covid-19 por estudiantes de la Facultad de Ingeniería y para la comunidad.</p>
+            <a class="btn btn-primary btn-lg mt-2 mb-2" href="#" role="button">Más sobre el proyecto</a>
+            <hr>
+
+            <ul class="list-group mt-2">
+                <li class="list-group-item active">Lista de usuarios.</li>
+                <span v-for="(item, index) in users_content" :key="index">
+                    <li class="list-group-item">{{item.id}}: {{item.nombre_usuario}}</li>
+                </span>
+            </ul>
+
         </div>
     </main>
   
