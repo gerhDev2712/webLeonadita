@@ -15,7 +15,7 @@ class UserController extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id','nombre_usuario','nombres','apellido_paterno','apellido_materno','admin'
+        'id','nombre_usuario','nombres','apellido_paterno','apellido_materno','email','password','admin'
     ];
 
     /**

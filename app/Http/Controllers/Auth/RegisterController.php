@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\User;
+use App\Http\Controllers\UserController as User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Validator; 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Exception;
 
 class RegisterController extends Controller
 {
@@ -50,9 +53,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'nombre_usuario' => ['required', 'string', 'max:255'],
+            'nombres' => ['required', 'string', 'max:255'],
+            'apellido_paterno' => ['required', 'string', 'max:255'],
+            'apellido_materno' => ['string', 'max:255','null'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'admin'=>['required','boolean']
         ]);
     }
 
@@ -65,9 +72,34 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'nombre_usuario' => $data['nombre_usuario'],
+            'nombres' => $data['nombres'],
+            'apellido_paterno' => $data['apellido_paterno'],
+            'apellido_materno' => $data['apellido_materno'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'admin' => $data['admin']
         ]);
+    }
+
+    public function register(Request $request){
+        try{
+        $data = $request->only('nombre_usuario','nombres','apellido_paterno','apellido_materno','email','password');
+        $creating = array('nombre_usuario'=>$data['nombre_usuario'],'nombres'=>$data['nombres'],'apellido_paterno'=>$data['apellido_paterno'],'apellido_materno'=>$data['apellido_materno'],'email'=>$data['email'],'password'=>$data['password'],'admin'=>false);
+        $validated = validator($creating);
+        if($validated){
+            $user = $this->create($creating);
+            auth()->login($user,true);
+            if($user){
+                Session::flash('message','Se ha registrqado e ingresado como usuario exitosamente');
+                return redirect()->route('home');
+            }
+            Session::flash('message','Hubo un error en el registro, favor de llenar correctamente los datos');
+            return redirect()->back()->withInput($request->input());
+        }
+        }catch(Exception $e){
+            Session::flash('message','Hubo un error en el registro, favor de llenar correctamente los datos');
+            return redirect()->back()->withInput($request->input());
+        }
     }
 }
