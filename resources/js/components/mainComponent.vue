@@ -1,7 +1,7 @@
 <template id="">
 
     <main>
-        <div class="jumbotron">
+        <div class="jumbotron" id="bg">
             <h1 class="display-4">Leonardita Engine</h1>
             <p class="lead">Un proyecto realizado durante la pandemia del sars-covid-19 por estudiantes de la Facultad de Ingeniería y para la comunidad.</p>
             <a class="btn btn-primary btn-lg mt-2 mb-2" href="#" role="button">Más sobre el proyecto</a>

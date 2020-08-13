@@ -37648,7 +37648,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("main", [
-    _c("div", { staticClass: "jumbotron" }, [
+    _c("div", { staticClass: "jumbotron", attrs: { id: "bg" } }, [
       _c("h1", { staticClass: "display-4" }, [_vm._v("Leonardita Engine")]),
       _vm._v(" "),
       _c("p", { staticClass: "lead" }, [
