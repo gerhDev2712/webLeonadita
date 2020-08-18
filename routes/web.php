@@ -37,6 +37,7 @@ Route::get('/home',['uses'=>'HomeController@index','as'=>'home']);
 
 //Ruta encargada de realizar el proceso de autenticacion
 Route::post('/login',['uses'=>'Auth\LoginController@login','as'=>'login']);
+Route::post('/register',['uses'=>'Auth\RegisterController@register','as'=>'register']);
 
 /*Route::get('/users',function(){
     $users = User::get();
