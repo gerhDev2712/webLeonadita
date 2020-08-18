@@ -30,13 +30,6 @@ Route::get('/', function () {
 
 })->name('index');
 
-//Ruta encargada de redirigir a Welcome
-Route::get('/welcome',function(){
-    
-    return view('welcome');
-
-})->name('welcome');
-
 Auth::routes();
 
 //Ruta encargada de redirigir a home (default creada por Laravel)
@@ -44,12 +37,6 @@ Route::get('/home',['uses'=>'HomeController@index','as'=>'home']);
 
 //Ruta encargada de realizar el proceso de autenticacion
 Route::post('/login',['uses'=>'Auth\LoginController@login','as'=>'login']);
-
-//Ruta prueba, creada para probar los controladores de Usuario y otras entidades
-Route::get('/getUsuario',function(){
-    $usuario = User::find(1);
-    return $usuario;
-})->name('getUsuario');
 
 /*Route::get('/users',function(){
     $users = User::get();
