@@ -92,7 +92,7 @@ class RegisterController extends Controller
             auth()->login($user,true);
             if($user){
                 Session::flash('message','Se ha registrqado e ingresado como usuario exitosamente');
-                return redirect()->route('home');
+                return redirect()->route('dashboard');
             }
             Session::flash('message','Hubo un error en el registro, favor de llenar correctamente los datos');
             return redirect()->back()->withInput($request->input());

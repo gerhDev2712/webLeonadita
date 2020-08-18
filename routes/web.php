@@ -33,7 +33,7 @@ Route::get('/', function () {
 Auth::routes();
 
 //Ruta encargada de redirigir a home (default creada por Laravel)
-Route::get('/home',['uses'=>'HomeController@index','as'=>'home']);
+Route::get('/dashboard',['uses'=>'DashboardController@index','as'=>'dashboard']);
 
 //Ruta encargada de realizar el proceso de autenticacion
 Route::post('/login',['uses'=>'Auth\LoginController@login','as'=>'login']);

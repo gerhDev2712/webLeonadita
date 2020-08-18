@@ -69,7 +69,7 @@ class LoginController extends Controller
                 Session::forget('message');
 
                 //retornamos a home
-                return redirect()->route('home');
+                return redirect()->route('dashboard');
             }
 
             //Retornamos a la vista anterior con un mensaje
